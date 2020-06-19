@@ -3,6 +3,10 @@
   background-color: antiquewhite;
 }
 
+input {
+  width: 50%;
+}
+
 .iframe-container {
   width: 50%;
   display: inline-block;

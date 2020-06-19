@@ -3,21 +3,21 @@ import Iframe from "react-iframe";
 import "./translated.css";
 
 export default function Translated() {
-  const homepage = "http://stoiccamel.ru/";
-  const [url, setUrl] = useState(homepage);
+  const homepage = "stoiccamel.ru/peter-the-great/";
+  const [url, setUrl] = useState('http://' + homepage);
   const [inputUrl, setInputUrl] = useState(homepage);
 
   const submitInputUrl = (e) => {
     e.preventDefault();
-    setUrl(inputUrl);
+    setUrl('http://' + inputUrl);
   };
 
   return (
     <div class="iframes">
       <div class="control">
-        <form onSubmit={submitInputUrl}>
+        <form class= "url" onSubmit={submitInputUrl}>
           <label>
-            URL:
+            URL: http://
             <input
               value={inputUrl}
               onChange={(event) => setInputUrl(event.target.value)}
@@ -25,6 +25,7 @@ export default function Translated() {
               type="text"
             />
           </label>
+          <br></br>
           <button>Submit</button>
         </form>
       </div>
