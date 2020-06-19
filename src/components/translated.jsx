@@ -3,12 +3,15 @@ import Iframe from "react-iframe";
 import "./translated.css";
 
 export default function Translated() {
-  const homepage = "http://stoiccamel.ru/";
+  const homepage = "https://russian.rt.com/";
   const [url, setUrl] = useState(homepage);
   const [inputUrl, setInputUrl] = useState(homepage);
 
   const submitInputUrl = (e) => {
     e.preventDefault();
+    if (!(inputUrl.startsWith("http://") || inputUrl.startsWith("https://"))) {
+      setInputUrl("http://" + inputUrl);
+    }
     setUrl(inputUrl);
   };
 
@@ -29,12 +32,12 @@ export default function Translated() {
         </form>
       </div>
       <div class="iframe-container">
-        <Iframe url={url} frameBorder="0" />
+        <Iframe src={url} frameBorder="0" />
       </div>
       <div class="iframe-container">
         <embed
-          src={
-            "https://translate.google.com/translate?hl=&sl=ru&tl=en&u=" +
+          uri={
+            "https://translate.google.com/translate?hl=&sl=auto&tl=en&u=" +
             encodeURIComponent(url)
           }
         />
