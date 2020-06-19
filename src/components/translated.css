@@ -1,0 +1,14 @@
+.iframes {
+  height: 100%;
+}
+
+.iframe-container {
+  width: 50%;
+  display: inline-block;
+  height: 100vh;
+}
+
+Iframe {
+  width: 100%;
+  height: 100%;
+}
