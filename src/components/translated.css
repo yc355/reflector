@@ -1,0 +1,14 @@
+.control {
+  height: 5vh;
+}
+
+.iframe-container {
+  width: 50%;
+  display: inline-block;
+  height: 95vh;
+}
+
+Iframe, embed {
+  width: 100%;
+  height: 100%;
+}
