@@ -5,7 +5,7 @@ import Translated from './components/translated.jsx'
 
 function App() {
   return (
-    <div className="App">
+    <div className="Reflector">
       <Translated/>
     </div>
   );
