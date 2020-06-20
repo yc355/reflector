@@ -6,21 +6,33 @@ import "./translated.css";
 
 export default function Translated({ location }) {
   const history = useHistory();
-  const homepage = "russian.rt.com";
-  const [inputUrl, setInputUrl] = useState('');
-  const [currentUrl, setCurrentUrl] = useState('');
-  const [navigableUrl, setNavigableUrl] = useState('');
+  const defaultHomepage = "russian.rt.com";
+  const [inputUrl, setInputUrl] = useState("");
+  const [currentUrl, setCurrentUrl] = useState("");
+  const [navigableUrl, setNavigableUrl] = useState("");
 
   useEffect(() => {
     let queryParams = queryString.parse(location.search);
-    let queryUrl = queryParams['url'];
-    setInputUrl(queryUrl || homepage)
-    setCurrentUrl(queryUrl || homepage);
+    let queryUrl = queryParams["url"];
+    setInputUrl(queryUrl || defaultHomepage);
+    setCurrentUrl(queryUrl || defaultHomepage);
   }, []);
 
   useEffect(() => {
-    setNavigableUrl("http://" + currentUrl)
+    setNavigableUrl("http://" + currentUrl);
   }, [currentUrl]);
+
+  useEffect(() => {
+    if (inputUrl.includes("http://")) {
+      setInputUrl(inputUrl.replace("http://", ""));
+    }
+    if (inputUrl.includes("https://")) {
+      setInputUrl(inputUrl.replace("https://", ""));
+    }
+    if (inputUrl.includes(" ")) {
+      setInputUrl(inputUrl.replace(/\s/g, ""));
+    }
+  }, [inputUrl]);
 
   const submitInputUrl = (e) => {
     e.preventDefault();
@@ -43,6 +55,7 @@ export default function Translated({ location }) {
           </label>
           <br></br>
           <button>Submit</button>
+          <span>Upon submit, URL in browser will update to a copy/paste-able link</span>
         </form>
       </div>
       <div class="iframe-container">
