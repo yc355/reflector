@@ -1,5 +1,10 @@
 .control {
   height: 5vh;
+  background-color: antiquewhite;
+}
+
+input {
+  width: 50%;
 }
 
 .iframe-container {
