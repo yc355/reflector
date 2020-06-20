@@ -19,7 +19,7 @@ export default function Translated({ location }) {
   }, []);
 
   useEffect(() => {
-    setNavigableUrl("http://" + currentUrl);
+    setNavigableUrl("https://" + currentUrl);
   }, [currentUrl]);
 
   useEffect(() => {
@@ -45,7 +45,7 @@ export default function Translated({ location }) {
       <div class="control">
         <form class="url" onSubmit={submitInputUrl}>
           <label>
-            URL: http://
+            URL: https://
             <input
               value={inputUrl}
               onChange={(event) => setInputUrl(event.target.value)}
