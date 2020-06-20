@@ -59,7 +59,9 @@ export default function Translated({ location }) {
         </form>
       </div>
       <div class="iframe-container">
-        <Iframe url={navigableUrl} frameBorder="0" />
+        <embed
+          src={navigableUrl}
+        />
       </div>
       <div class="iframe-container">
         <embed
