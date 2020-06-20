@@ -1,21 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import Iframe from "react-iframe";
+import queryString from "query-string";
 import "./translated.css";
 
-export default function Translated() {
-  const homepage = "stoiccamel.ru/peter-the-great/";
-  const [url, setUrl] = useState('http://' + homepage);
-  const [inputUrl, setInputUrl] = useState(homepage);
+export default function Translated({ location }) {
+  const history = useHistory();
+  const homepage = "russian.rt.com";
+  const [inputUrl, setInputUrl] = useState('');
+  const [currentUrl, setCurrentUrl] = useState('');
+  const [navigableUrl, setNavigableUrl] = useState('');
+
+  useEffect(() => {
+    let queryParams = queryString.parse(location.search);
+    let queryUrl = queryParams['url'];
+    setInputUrl(queryUrl || homepage)
+    setCurrentUrl(queryUrl || homepage);
+  }, []);
+
+  useEffect(() => {
+    setNavigableUrl("http://" + currentUrl)
+  }, [currentUrl]);
 
   const submitInputUrl = (e) => {
     e.preventDefault();
-    setUrl('http://' + inputUrl);
+    setCurrentUrl(inputUrl);
+    history.push("/?url=" + encodeURIComponent(inputUrl));
   };
 
   return (
     <div class="iframes">
       <div class="control">
-        <form class= "url" onSubmit={submitInputUrl}>
+        <form class="url" onSubmit={submitInputUrl}>
           <label>
             URL: http://
             <input
@@ -30,13 +46,13 @@ export default function Translated() {
         </form>
       </div>
       <div class="iframe-container">
-        <Iframe url={url} frameBorder="0" />
+        <Iframe url={navigableUrl} frameBorder="0" />
       </div>
       <div class="iframe-container">
         <embed
           src={
             "https://translate.google.com/translate?hl=&sl=auto&tl=en&u=" +
-            encodeURIComponent(url)
+            encodeURIComponent(navigableUrl)
           }
         />
       </div>
