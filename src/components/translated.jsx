@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import Iframe from "react-iframe";
 import queryString from "query-string";
 import "./translated.css";
 
@@ -16,7 +15,7 @@ export default function Translated({ location }) {
     let queryUrl = queryParams["url"];
     setInputUrl(queryUrl || defaultHomepage);
     setCurrentUrl(queryUrl || defaultHomepage);
-  }, []);
+  }, [location.search]);
 
   useEffect(() => {
     setNavigableUrl("https://" + currentUrl);
