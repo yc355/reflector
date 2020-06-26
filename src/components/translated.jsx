@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import Iframe from "react-iframe";
 import queryString from "query-string";
 import "./translated.css";
 
@@ -16,7 +15,7 @@ export default function Translated({ location }) {
     let queryUrl = queryParams["url"];
     setInputUrl(queryUrl || defaultHomepage);
     setCurrentUrl(queryUrl || defaultHomepage);
-  }, []);
+  }, [location.search]);
 
   useEffect(() => {
     setNavigableUrl("https://" + currentUrl);
@@ -43,6 +42,12 @@ export default function Translated({ location }) {
   return (
     <div class="iframes">
       <div class="control">
+        <a 
+          href="https://medium.com/@yifan.i.chen/reflections-on-reflector-challenges-in-embedding-web-content-c8cd3e0ed9b6"
+          target="_blank"
+        >
+          Reflections on Reflector: Challenges in embedding web content
+        </a>
         <form class="url" onSubmit={submitInputUrl}>
           <label>
             URL: https://
