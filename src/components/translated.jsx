@@ -42,6 +42,12 @@ export default function Translated({ location }) {
   return (
     <div class="iframes">
       <div class="control">
+        <a 
+          href="https://medium.com/@yifan.i.chen/reflections-on-reflector-challenges-in-embedding-web-content-c8cd3e0ed9b6"
+          target="_blank"
+        >
+          Reflections on Reflector: Challenges in embedding web content
+        </a>
         <form class="url" onSubmit={submitInputUrl}>
           <label>
             URL: https://

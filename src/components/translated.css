@@ -1,5 +1,5 @@
 .control {
-  height: 5vh;
+  height: 10vh;
   background-color: antiquewhite;
 }
 
@@ -10,7 +10,7 @@ input {
 .iframe-container {
   width: 50%;
   display: inline-block;
-  height: 95vh;
+  height: 90vh;
 }
 
 Iframe, embed {
